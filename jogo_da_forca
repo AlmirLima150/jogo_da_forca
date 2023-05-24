@@ -1,0 +1,53 @@
+import random
+
+palavras = ['cachorro', 'gato', 'elefante', 'leao', 'tigre']
+palavra_aleatoria = random.choice(palavras)
+
+
+letras_erradas = []
+letras_certas = []
+
+
+for i in range(len(palavra_aleatoria)):
+    letras_certas.append('_')
+
+while True:
+    print()
+    for letra in letras_certas:
+        print(letra, end=' ')
+    print()
+
+    print('Letras erradas:', end=' ')
+    for letra in letras_erradas:
+        print(letra, end=' ')
+    print()
+
+    letra = input('Digite uma letra: ').lower()
+
+    if letra in palavra_aleatoria:
+        
+        for i in range(len(palavra_aleatoria)):
+            if palavra_aleatoria[i] == letra:
+                letras_certas[i] = letra
+        
+        if '_' not in letras_certas:
+            print('Parabéns! Você acertou a palavra secreta:', palavra_aleatoria)
+            break
+    
+    else:
+        letras_erradas.append(letra)
+
+        if len(letras_erradas) == 1:
+            print('Você errou pela primeira vez. Adicione uma parte do boneco.')
+        elif len(letras_erradas) == 2:
+            print('Você errou pela segunda vez. Adicione outra parte do boneco.')
+        elif len(letras_erradas) == 3:
+            print('Você errou pela terceira vez. Adicione outra parte do boneco.')
+        elif len(letras_erradas) == 4:
+            print('Você errou pela quarta vez. Adicione outra parte do boneco.')
+        elif len(letras_erradas) == 5:
+            print('Você errou pela quinta vez. Adicione outra parte do boneco.')
+        elif len(letras_erradas) == 6:
+            print('Você errou pela sexta vez. O boneco foi totalmente formado na forca.')
+            print('Fim de jogo! A palavra secreta era:', palavra_aleatoria)
+            break
